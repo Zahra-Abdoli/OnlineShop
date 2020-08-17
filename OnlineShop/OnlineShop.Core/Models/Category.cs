@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Core
 {
-    public class Class1
+   public  class Category:BaseEntity
     {
-       //jhvjlvlv
-       // Greeshma
-
+        public String CategoryName { get; set; }
     }
 }
