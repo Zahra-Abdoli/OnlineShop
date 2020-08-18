@@ -1,4 +1,5 @@
 ﻿using OnlineShop.Core;
+using OnlineShop.Core.Contarcts;
 using OnlineShop.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace OnlineShop.WebUI.Controllers
     {
         IRepository<Product> context;
         IRepository<Category> productCategories;
-        public ProductManagerController(IRepository<Product> productContext, IRepository<Category> productCategoriesContext)
+        public ProductAdminController(IRepository<Product> productContext, IRepository<Category> productCategoriesContext)
         {
             context = productContext;
             productCategories = productCategoriesContext;

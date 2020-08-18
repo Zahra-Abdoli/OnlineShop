@@ -1,4 +1,5 @@
 ﻿using OnlineShop.Core;
+using OnlineShop.Core.Contarcts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
