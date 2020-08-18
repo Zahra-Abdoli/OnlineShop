@@ -1,40 +1,32 @@
 ﻿using OnlineShop.Core;
-using OnlineShop.Core.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace OnlineShop.WebUI.Controllers
 {
-    public class ProductAdminController : Controller
+    public class CategoryAdminController : Controller
     {
-        IRepository<Product> context;
-        IRepository<Category> productCategories;
-        public ProductManagerController(IRepository<Product> productContext, IRepository<Category> productCategoriesContext)
+        IRepository<Category> context;
+        public CategoryAdminController(IRepository<Category> productCategoryContext)
         {
-            context = productContext;
-            productCategories = productCategoriesContext;
+            context = productCategoryContext;
         }
-
+        // GET: ProductManager
         public ActionResult Index()
         {
-            List<Product> products = context.Collection().ToList();
+            List<Category> products = context.Collection().ToList();
             return View(products);
         }
         public ActionResult Create()
         {
-
-            ProductAdminViewModel viewModel = new ProductAdminViewModel();
-            viewModel.product = new Product();
-            viewModel.productCategories = productCategories.Collection();
-            return View(viewModel);
-
+            Category product = new Category();
+            return View(product);
         }
         [HttpPost]
-        public ActionResult Create(Product product,HttpPostedFileBase file)
+        public ActionResult Create(Category product)
         {
             if (!ModelState.IsValid)
             {
@@ -42,11 +34,6 @@ namespace OnlineShop.WebUI.Controllers
             }
             else
             {
-                if (file != null)
-                {
-                    product.Image = product.Id + Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
-                }
                 context.Insert(product);
                 context.Commit();
                 return RedirectToAction("Index");
@@ -55,23 +42,20 @@ namespace OnlineShop.WebUI.Controllers
         }
         public ActionResult Edit(string Id)
         {
-            Product product = context.Find(Id);
+            Category product = context.Find(Id);
             if (product == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                ProductAdminViewModel viewModel = new ProductAdminViewModel();
-                viewModel.product = product;
-                viewModel.productCategories = productCategories.Collection();
-                return View(viewModel);
+                return View(product);
             }
         }
         [HttpPost]
-        public ActionResult Edit(Product product, string Id, HttpPostedFileBase file)
+        public ActionResult Edit(Category product, string Id)
         {
-            Product productToEdit = context.Find(Id);
+           Category productToEdit = context.Find(Id);
             if (productToEdit == null)
             {
                 return HttpNotFound();
@@ -82,19 +66,7 @@ namespace OnlineShop.WebUI.Controllers
                 {
                     return View(product);
                 }
-                if (file != null)
-                {
-                    productToEdit.Image = productToEdit.Id + Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + productToEdit.Image);
-                }
-
-                productToEdit.Category = product.Category;
-                productToEdit.Description = product.Description;
-             
-                productToEdit.Name = product.Name;
-                productToEdit.Price = product.Price;
-
-
+                productToEdit.CategoryName = product.CategoryName;
                 context.Commit();
                 return RedirectToAction("Index");
             }
@@ -102,7 +74,7 @@ namespace OnlineShop.WebUI.Controllers
         public ActionResult Details(string id)
 
         {
-            Product product = context.Find(id);
+           Category product = context.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -114,7 +86,7 @@ namespace OnlineShop.WebUI.Controllers
         }
         public ActionResult Delete(string Id)
         {
-            Product productToDelete = context.Find(Id);
+            Category productToDelete = context.Find(Id);
 
             if (productToDelete == null)
             {
@@ -129,7 +101,7 @@ namespace OnlineShop.WebUI.Controllers
         [ActionName("Delete")]
         public ActionResult ConfirmDelete(string Id)
         {
-            Product productToDelete = context.Find(Id);
+            Category productToDelete = context.Find(Id);
             if (productToDelete == null)
             {
                 return HttpNotFound();
