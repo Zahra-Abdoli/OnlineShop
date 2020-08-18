@@ -7,7 +7,7 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm("Create", "ProduAdmin", FormMethod.Post, new { enctype = "mulipart/form-control" })) 
+@using (Html.BeginForm("Create", "ProductAdmin", FormMethod.Post, new { enctype = "mulipart/form-control" })) 
 {
                 @Html.AntiForgeryToken()
 
@@ -15,18 +15,15 @@
         <h4>Product</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.product.CreatedAt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.product.CreatedAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.product.CreatedAt, "", new { @class = "text-danger" })
-            </div>
-        </div>
+       
 
         <div class="form-group">
             @Html.LabelFor(model => model.product.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.product.Category, new SelectList(Model.productCategories, "Category", "Category"), new { htmlAttributes = new { @class = "form-control" } })
+               
+            @Html.EditorFor(model => model.product.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.product.Name, "", new { @class = "text-danger" })
+               
             </div>
         </div>
 
@@ -49,16 +46,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.product.Category, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.product.Category, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.product.Category, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.product.Category, new SelectList(Model.productCategories, "CategoryName", "CategoryName"), new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.product.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.product.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.product.Image, "", new { @class = "text-danger" })
+                <input type="file" id="file" class="form-control" />
             </div>
         </div>
 

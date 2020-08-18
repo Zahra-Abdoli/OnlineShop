@@ -8,7 +8,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm("Edit", "ProductManager", FormMethod.Post, new { encType = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "ProductAdmin", FormMethod.Post, new { encType = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -50,7 +50,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.product.Category, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.product.Category, new SelectList(Model.productCategories, "Category", "Category"), new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(model => model.product.Category, new SelectList(Model.productCategories, "CategoryName", "CategoryName"), new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             </div>
 
