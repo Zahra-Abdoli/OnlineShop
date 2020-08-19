@@ -13,7 +13,7 @@ namespace OnlineShop.DataAccess.SQL.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         CategoryName = c.String(),
-                        CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
+                    CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
                     })
                 .PrimaryKey(t => t.Id);
             
