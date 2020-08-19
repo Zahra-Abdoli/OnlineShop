@@ -8,7 +8,7 @@ namespace OnlineShop.Core
 {
    public  class Category:BaseEntity
     {
-        public String CategoryName { get; set; }
+        public string CategoryName { get; set; }
         public string Image { get; set; }
     }
 }
