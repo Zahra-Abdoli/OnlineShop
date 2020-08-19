@@ -57,6 +57,10 @@
     <Compile Include="Migrations\202008182222143_category.Designer.cs">
       <DependentUpon>202008182222143_category.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008191121290_basket.cs" />
+    <Compile Include="Migrations\202008191121290_basket.Designer.cs">
+      <DependentUpon>202008191121290_basket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008182222143_category.resx">
       <DependentUpon>202008182222143_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008191121290_basket.resx">
+      <DependentUpon>202008191121290_basket.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
