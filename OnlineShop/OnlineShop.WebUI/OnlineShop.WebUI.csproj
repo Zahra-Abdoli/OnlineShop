@@ -267,9 +267,12 @@
     <Content Include="Views\ProductAdmin\Delete.cshtml" />
     <Content Include="Views\ProductAdmin\Details.cshtml" />
     <Content Include="Views\ProductAdmin\Edit.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Sort.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\CategoryImages\" />
     <Folder Include="Content\ProductImages\" />
   </ItemGroup>
   <ItemGroup>

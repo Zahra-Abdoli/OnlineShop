@@ -2,6 +2,7 @@
 using OnlineShop.Core.Contarcts;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,24 +19,30 @@ namespace OnlineShop.WebUI.Controllers
         // GET: ProductManager
         public ActionResult Index()
         {
-            List<Category> products = context.Collection().ToList();
-            return View(products);
+            List<Category> categories = context.Collection().ToList();
+            return View(categories);
         }
         public ActionResult Create()
         {
-            Category product = new Category();
-            return View(product);
+            Category category = new Category();
+            return View(category);
         }
         [HttpPost]
-        public ActionResult Create(Category product)
+        public ActionResult Create(Category category, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
-                return View(product);
+                return View(category);
             }
             else
             {
-                context.Insert(product);
+                if (file != null)
+                {
+                    category.Image = category.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//CategoryImages//") + category.Image);
+         
+                }
+                context.Insert(category);
                 context.Commit();
                 return RedirectToAction("Index");
 
@@ -43,21 +50,21 @@ namespace OnlineShop.WebUI.Controllers
         }
         public ActionResult Edit(string Id)
         {
-            Category product = context.Find(Id);
-            if (product == null)
+            Category category = context.Find(Id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                return View(product);
+                return View(category);
             }
         }
         [HttpPost]
-        public ActionResult Edit(Category product, string Id)
+        public ActionResult Edit(Category category, string Id)
         {
-           Category productToEdit = context.Find(Id);
-            if (productToEdit == null)
+           Category categoryToEdit = context.Find(Id);
+            if (categoryToEdit == null)
             {
                 return HttpNotFound();
             }
@@ -65,9 +72,9 @@ namespace OnlineShop.WebUI.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(product);
+                    return View(category);
                 }
-                productToEdit.CategoryName = product.CategoryName;
+                categoryToEdit.CategoryName = category.CategoryName;
                 context.Commit();
                 return RedirectToAction("Index");
             }
@@ -75,35 +82,35 @@ namespace OnlineShop.WebUI.Controllers
         public ActionResult Details(string id)
 
         {
-           Category product = context.Find(id);
-            if (product == null)
+           Category category = context.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                return View(product);
+                return View(category);
             }
         }
         public ActionResult Delete(string Id)
         {
-            Category productToDelete = context.Find(Id);
+            Category categoryToDelete = context.Find(Id);
 
-            if (productToDelete == null)
+            if (categoryToDelete == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                return View(productToDelete);
+                return View(categoryToDelete);
             }
         }
         [HttpPost]
         [ActionName("Delete")]
         public ActionResult ConfirmDelete(string Id)
         {
-            Category productToDelete = context.Find(Id);
-            if (productToDelete == null)
+            Category categoryToDelete = context.Find(Id);
+            if (categoryToDelete == null)
             {
                 return HttpNotFound();
             }
