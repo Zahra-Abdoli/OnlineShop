@@ -188,6 +188,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\CategoryAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -267,6 +268,8 @@
     <Content Include="Views\ProductAdmin\Delete.cshtml" />
     <Content Include="Views\ProductAdmin\Details.cshtml" />
     <Content Include="Views\ProductAdmin\Edit.cshtml" />
+    <Content Include="Views\Basket\Index.cshtml" />
+    <Content Include="Views\Basket\BasketSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -293,6 +296,10 @@
     <ProjectReference Include="..\OnlineShop.DataAccess.SQL\OnlineShop.DataAccess.SQL.csproj">
       <Project>{79ecf320-49ef-4e13-b52f-eef7e8bbd667}</Project>
       <Name>OnlineShop.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Servises\OnlineShop.Servises.csproj">
+      <Project>{B0FB88F5-5139-4190-AC7E-43986222CA20}</Project>
+      <Name>OnlineShop.Servises</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

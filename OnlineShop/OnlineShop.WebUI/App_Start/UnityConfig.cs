@@ -1,6 +1,8 @@
 using OnlineShop.Core;
 using OnlineShop.Core.Contarcts;
+using OnlineShop.Core.Models;
 using OnlineShop.DataAccess.SQL;
+using OnlineShop.Servises;
 using System;
 
 using Unity;
@@ -47,6 +49,9 @@ namespace OnlineShop.WebUI
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<Product>, SqlRepository<Product>>();
             container.RegisterType<IRepository<Category>, SqlRepository<Category>>();
+            container.RegisterType<IRepository<Basket>, SqlRepository<Basket>>();
+            container.RegisterType<IRepository<BasketItem>, SqlRepository<BasketItem>>();
+            container.RegisterType<IBasketService, BasketService>();
         }
     }
 }
