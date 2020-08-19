@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OnlineShop.Core;
+using OnlineShop.Core.Models;
 
 namespace OnlineShop.DataAccess.SQL
 {
@@ -17,6 +18,8 @@ namespace OnlineShop.DataAccess.SQL
             }
             public DbSet<Product> Products { get; set; }
             public DbSet<Category> ProductCategories { get; set; }
-          
+        public DbSet<BasketItem> BasketItems { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+
     }
 }
