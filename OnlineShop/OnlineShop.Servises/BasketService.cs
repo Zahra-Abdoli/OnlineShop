@@ -16,7 +16,7 @@ namespace OnlineShop.Servises
 
         IRepository<Product> productContext;
         IRepository<Basket> basketContext;
-        public const string BasketSessionName = "H&kBasket";
+        public const string BasketSessionName = "eCommerceBasket";
         public BasketService(IRepository<Product> ProductContext, IRepository<Basket> BasketContext)
         {
             this.basketContext = BasketContext;

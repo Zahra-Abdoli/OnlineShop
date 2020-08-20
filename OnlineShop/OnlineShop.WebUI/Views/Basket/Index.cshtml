@@ -38,9 +38,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
+           
             <td>
                 @String.Format("{0:c}", item.Price)
             </td>
@@ -58,5 +56,7 @@
         <td>@String.Format("{0:c}", (from p in Model select p.Price * p.Quantity).Sum())</td>
     </tr>
 </table>
+<a href="@Url.Action("CheckOut", "Index")" class="btn btn-default">CheckOut</a>
+
 
 
