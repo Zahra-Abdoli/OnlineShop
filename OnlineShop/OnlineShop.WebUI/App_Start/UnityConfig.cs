@@ -1,9 +1,12 @@
 using OnlineShop.Core;
 using OnlineShop.Core.Contarcts;
 using OnlineShop.DataAccess.SQL;
+using OnlineShop.WebUI.Controllers;
 using System;
-
+using System.Web.Mvc;
 using Unity;
+using Unity.AspNet.Mvc;
+using Unity.Injection;
 
 namespace OnlineShop.WebUI
 {
@@ -47,6 +50,12 @@ namespace OnlineShop.WebUI
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<Product>, SqlRepository<Product>>();
             container.RegisterType<IRepository<Category>, SqlRepository<Category>>();
+
+            //register a user it is probably in the standard AccountController.
+            // Unity tries to call the constructor with two parameters, for example
+             //Unity to call the parameterless constructor
+            container.RegisterType<AccountController>(new InjectionConstructor());
+
         }
     }
 }

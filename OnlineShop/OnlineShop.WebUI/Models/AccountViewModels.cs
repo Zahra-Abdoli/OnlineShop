@@ -5,6 +5,7 @@ namespace OnlineShop.WebUI.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
+
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -64,6 +65,7 @@ namespace OnlineShop.WebUI.Models
 
     public class RegisterViewModel
     {
+        public string Name { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

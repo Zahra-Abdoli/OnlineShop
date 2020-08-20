@@ -1,7 +1,6 @@
 ﻿using OnlineShop.Core;
 using OnlineShop.Core.Contarcts;
 using OnlineShop.Core.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +9,8 @@ using System.Web.Mvc;
 
 namespace OnlineShop.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
+      //[Authorize]
     public class ProductAdminController : Controller
     {
         IRepository<Product> context;
@@ -19,22 +20,27 @@ namespace OnlineShop.WebUI.Controllers
             context = productContext;
             productCategories = productCategoriesContext;
         }
-
+       
         public ActionResult Index()
         {
             List<Product> products = context.Collection().ToList();
+           
             return View(products);
         }
+    
         public ActionResult Create()
         {
 
             ProductAdminViewModel viewModel = new ProductAdminViewModel();
             viewModel.product = new Product();
             viewModel.productCategories = productCategories.Collection();
-            return View(viewModel);
+            
+
+                return View(viewModel);
 
         }
         [HttpPost]
+  
         public ActionResult Create(Product product,HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
@@ -51,9 +57,9 @@ namespace OnlineShop.WebUI.Controllers
                 context.Insert(product);
                 context.Commit();
                 return RedirectToAction("Index");
-
             }
         }
+
         public ActionResult Edit(string Id)
         {
             Product product = context.Find(Id);
@@ -70,6 +76,7 @@ namespace OnlineShop.WebUI.Controllers
             }
         }
         [HttpPost]
+
         public ActionResult Edit(Product product, string Id, HttpPostedFileBase file)
         {
             Product productToEdit = context.Find(Id);
@@ -113,6 +120,7 @@ namespace OnlineShop.WebUI.Controllers
                 return View(product);
             }
         }
+
         public ActionResult Delete(string Id)
         {
             Product productToDelete = context.Find(Id);
@@ -128,6 +136,7 @@ namespace OnlineShop.WebUI.Controllers
         }
         [HttpPost]
         [ActionName("Delete")]
+ 
         public ActionResult ConfirmDelete(string Id)
         {
             Product productToDelete = context.Find(Id);

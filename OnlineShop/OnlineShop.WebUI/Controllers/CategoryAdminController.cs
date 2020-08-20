@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace OnlineShop.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoryAdminController : Controller
     {
         IRepository<Category> context;
