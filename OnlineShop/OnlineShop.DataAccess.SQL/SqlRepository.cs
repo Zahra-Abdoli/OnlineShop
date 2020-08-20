@@ -16,8 +16,7 @@ namespace OnlineShop.DataAccess.SQL
             internal DataContext context;
             internal DbSet<T> dbSet;
 
-            public SqlRepository(DataContext context)
-            {
+        public SqlRepository(DataContext context) { 
                 this.context = context;
                 this.dbSet = context.Set<T>();
             }

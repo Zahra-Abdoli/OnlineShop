@@ -3,30 +3,29 @@ namespace OnlineShop.DataAccess.SQL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Inital : DbMigration
+    public partial class AddToBasket : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Categories",
+                "dbo.BasketItems",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        CategoryName = c.String(),
-                    CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
+                        BasketId = c.String(maxLength: 128),
+                        ProductId = c.String(),
+                        Quantity = c.Int(nullable: false),
+                        CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Baskets", t => t.BasketId)
+                .Index(t => t.BasketId);
             
             CreateTable(
-                "dbo.Products",
+                "dbo.Baskets",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(),
-                        Description = c.String(),
-                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Category = c.String(),
-                        Image = c.String(),
                         CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
                     })
                 .PrimaryKey(t => t.Id);
@@ -35,8 +34,10 @@ namespace OnlineShop.DataAccess.SQL.Migrations
         
         public override void Down()
         {
-            DropTable("dbo.Products");
-            DropTable("dbo.Categories");
+            DropForeignKey("dbo.BasketItems", "BasketId", "dbo.Baskets");
+            DropIndex("dbo.BasketItems", new[] { "BasketId" });
+            DropTable("dbo.Baskets");
+            DropTable("dbo.BasketItems");
         }
     }
 }
