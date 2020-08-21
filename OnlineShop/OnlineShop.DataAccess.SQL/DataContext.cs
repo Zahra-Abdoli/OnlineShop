@@ -20,6 +20,8 @@ namespace OnlineShop.DataAccess.SQL
             public DbSet<Category> ProductCategories { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Basket> Baskets { get; set; }
+        public DbSet<CheckOutInformation> CheckOutInformations { get; set; }
+
 
     }
 }

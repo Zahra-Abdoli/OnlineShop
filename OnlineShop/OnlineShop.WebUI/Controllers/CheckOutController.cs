@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnlineShop.Core;
+using OnlineShop.Core.Contarcts;
+using OnlineShop.Core.Models;
+using OnlineShop.Core.ViewModels;
 
 namespace OnlineShop.WebUI.Controllers
 {
     public class CheckOutController : Controller
     {
-        // GET: CheckOut
-        public ActionResult Index()
+        IRepository<CheckOutInformation> context;
+        IBasketService basketService;
+        public CheckOutController(IRepository<CheckOutInformation> checkOutContext, IBasketService BasketService)
         {
-            return View();
+            context = checkOutContext;
+            this.basketService = BasketService;
         }
 
-        // GET: CheckOut/Details/5
-        public ActionResult Details(int id)
+        // GET: CheckOut
+        public ActionResult Index()
         {
             return View();
         }
@@ -23,67 +29,29 @@ namespace OnlineShop.WebUI.Controllers
         // GET: CheckOut/Create
         public ActionResult Create()
         {
-            return View();
+            CheckOutInformationViewModel viewModel= new CheckOutInformationViewModel();
+          viewModel.checkOutInformation = new CheckOutInformation();
+            viewModel.basketItemViewModels =basketService.GetBasketItems(this.HttpContext);
+
+            return View(viewModel);
         }
 
         // POST: CheckOut/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CheckOutInformation checkOutInformation)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                return View(checkOutInformation);
+            }
+            else
+            {
+                context.Insert(checkOutInformation);
+                context.Commit();
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+
             }
         }
 
-        // GET: CheckOut/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: CheckOut/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CheckOut/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CheckOut/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

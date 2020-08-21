@@ -53,6 +53,14 @@
     <Compile Include="Migrations\202008191329159_basket.Designer.cs">
       <DependentUpon>202008191329159_basket.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008210813527_checkout.cs" />
+    <Compile Include="Migrations\202008210813527_checkout.Designer.cs">
+      <DependentUpon>202008210813527_checkout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008211306486_checkoutfixed.cs" />
+    <Compile Include="Migrations\202008211306486_checkoutfixed.Designer.cs">
+      <DependentUpon>202008211306486_checkoutfixed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +78,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202008191329159_basket.resx">
       <DependentUpon>202008191329159_basket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008210813527_checkout.resx">
+      <DependentUpon>202008210813527_checkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211306486_checkoutfixed.resx">
+      <DependentUpon>202008211306486_checkoutfixed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

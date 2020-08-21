@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Basket Summary</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th></th>
@@ -22,7 +19,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        <th>Total Amount </th>
+        <th> Total Amount </th>
         <th></th>
     </tr>
 
@@ -38,7 +35,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
-           
+
             <td>
                 @String.Format("{0:c}", item.Price)
             </td>
@@ -56,7 +53,9 @@
         <td>@String.Format("{0:c}", (from p in Model select p.Price * p.Quantity).Sum())</td>
     </tr>
 </table>
-<a href="@Url.Action("CheckOut", "Index")" class="btn btn-default">CheckOut</a>
+<div><a href="@Url.Action("Index","Home")"> Back to Home</a></div>
+
+<div><a href="@Url.Action("Create","CheckOut")" class="btn btn-default">CheckOut</a></div>
 
 
 

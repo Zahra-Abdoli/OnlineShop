@@ -273,6 +273,7 @@
     <Content Include="Views\Basket\BasketSummary.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Sort.cshtml" />
+    <Content Include="Views\CheckOut\Create.cshtml" />
     <Content Include="Views\CheckOut\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
