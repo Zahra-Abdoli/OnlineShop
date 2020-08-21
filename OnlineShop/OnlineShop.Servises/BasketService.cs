@@ -25,7 +25,9 @@ namespace OnlineShop.Servises
         private Basket GetBasket(HttpContextBase httpContext, bool createIfNull)
         {
             HttpCookie cookie = httpContext.Request.Cookies.Get(BasketSessionName);
+
             Basket basket = new Basket();
+
             if (cookie != null)
             {
                 string basketId = cookie.Value;
@@ -56,6 +58,7 @@ namespace OnlineShop.Servises
             Basket basket = new Basket();
             basketContext.Insert(basket);
             basketContext.Commit();
+
             HttpCookie cookie = new HttpCookie(BasketSessionName);
             cookie.Value = basket.Id;
             cookie.Expires = DateTime.Now.AddDays(1);
@@ -82,6 +85,7 @@ namespace OnlineShop.Servises
             }
             basketContext.Commit();
         }
+
         public void RemoveFromBasket(HttpContextBase httpContext, string itemId)
         {
             Basket basket = GetBasket(httpContext, true);

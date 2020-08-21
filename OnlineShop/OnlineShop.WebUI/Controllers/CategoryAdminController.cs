@@ -40,7 +40,6 @@ namespace OnlineShop.WebUI.Controllers
                 {
                     category.Image = category.Id + Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath("//Content//CategoryImages//") + category.Image);
-         
                 }
                 context.Insert(category);
                 context.Commit();

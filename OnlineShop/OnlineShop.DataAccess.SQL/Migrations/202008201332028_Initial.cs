@@ -3,7 +3,7 @@ namespace OnlineShop.DataAccess.SQL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class basket : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {

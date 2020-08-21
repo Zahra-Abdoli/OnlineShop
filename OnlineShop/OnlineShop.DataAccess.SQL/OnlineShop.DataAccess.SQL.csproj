@@ -49,9 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\202008191329159_basket.cs" />
-    <Compile Include="Migrations\202008191329159_basket.Designer.cs">
-      <DependentUpon>202008191329159_basket.cs</DependentUpon>
+    <Compile Include="Migrations\202008201332028_Initial.cs" />
+    <Compile Include="Migrations\202008201332028_Initial.Designer.cs">
+      <DependentUpon>202008201332028_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlRepository.cs" />
@@ -68,8 +68,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008191329159_basket.resx">
-      <DependentUpon>202008191329159_basket.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008201332028_Initial.resx">
+      <DependentUpon>202008201332028_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
