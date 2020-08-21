@@ -3,9 +3,12 @@ using OnlineShop.Core.Contarcts;
 using OnlineShop.Core.Models;
 using OnlineShop.DataAccess.SQL;
 using OnlineShop.Servises;
+using OnlineShop.WebUI.Controllers;
 using System;
-
+using System.Web.Mvc;
 using Unity;
+using Unity.AspNet.Mvc;
+using Unity.Injection;
 
 namespace OnlineShop.WebUI
 {
@@ -53,6 +56,12 @@ namespace OnlineShop.WebUI
             container.RegisterType<IRepository<BasketItem>, SqlRepository<BasketItem>>();
             container.RegisterType<IRepository<CheckOutInformation>, SqlRepository<CheckOutInformation>>();
             container.RegisterType<IBasketService, BasketService>();
+
+            //register a user it is probably in the standard AccountController.
+            // Unity tries to call the constructor with two parameters, for example
+             //Unity to call the parameterless constructor
+            container.RegisterType<AccountController>(new InjectionConstructor());
+
         }
     }
 }
