@@ -7,15 +7,16 @@
 
 @foreach (var item in Model)
 {
-    <div class="col-md-4" style="height:450px; padding:10px; border:solid thin whitesmoke ;background:@item.Image" >
-  
+    <div class="col-md-4" style="height:350px;width:350px;padding:10px; border:solid thin whitesmoke ;background-size:500px;background-image:url('/Content/CategoryImages/@item.Image')">
+
         <div class="col-md-12">
-            
-            <strong>@Html.ActionLink(item.CategoryName, "Sort",new { categoryName=item.CategoryName})</strong>
-            
-           
+
+            <strong>@Html.ActionLink(item.CategoryName, "Sort", new { categoryName = item.CategoryName })</strong>
+
+
         </div>
-        
+
     </div>
-}
-<div class="col-md-12 clearfix">
+    
+    }
+    <div class="col-md-12 clearfix"></div>

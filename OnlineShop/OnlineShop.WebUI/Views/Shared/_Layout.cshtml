@@ -22,18 +22,21 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Products", "Index", "Products")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (User.IsInRole("Admin"))
+                    @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Product Admin", "Index", "ProductAdmin")</li>
-                        <li>@Html.ActionLink("Category Admin", "Index", "CategoryAdmin")</li>
                         <li>@Html.ActionLink("Roles", "Index", "Role")</li>
-
                     }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Product Admin", "Index", "ProductAdmin")</li>
+                            <li>@Html.ActionLink("Category Admin", "Index", "CategoryAdmin")</li>
 
-                </ul>
+
+                        }
+
+                    </ul>
                 @Html.Partial("_LoginPartial")
                 @{
                     Html.RenderAction("BasketSummary", "Basket");

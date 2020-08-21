@@ -1,15 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    if (User.IsInRole("User")) { 
-
-        <ul class="nav navbar-nav ">
-            <li>
-                @Html.ActionLink("Products ", "Index", "Products")
-            </li>
-
-        </ul>
-    }
+   
 
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
