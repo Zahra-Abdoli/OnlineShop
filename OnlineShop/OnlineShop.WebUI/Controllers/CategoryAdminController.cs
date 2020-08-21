@@ -1,5 +1,6 @@
 ﻿using OnlineShop.Core;
 using OnlineShop.Core.Contarcts;
+using OnlineShop.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;

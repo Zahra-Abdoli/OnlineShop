@@ -119,17 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\202008181153481_Inital.cs" />
-    <Compile Include="Migrations\202008181153481_Inital.Designer.cs">
-      <DependentUpon>202008181153481_Inital.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008182222143_category.cs" />
-    <Compile Include="Migrations\202008182222143_category.Designer.cs">
-      <DependentUpon>202008182222143_category.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008191121290_basket.cs" />
-    <Compile Include="Migrations\202008191121290_basket.Designer.cs">
-      <DependentUpon>202008191121290_basket.cs</DependentUpon>
+    <Compile Include="Migrations\202008202029417_Initial.cs" />
+    <Compile Include="Migrations\202008202029417_Initial.Designer.cs">
+      <DependentUpon>202008202029417_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlRepository.cs" />
@@ -146,14 +138,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008181153481_Inital.resx">
-      <DependentUpon>202008181153481_Inital.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008182222143_category.resx">
-      <DependentUpon>202008182222143_category.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008191121290_basket.resx">
-      <DependentUpon>202008191121290_basket.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008202029417_Initial.resx">
+      <DependentUpon>202008202029417_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
