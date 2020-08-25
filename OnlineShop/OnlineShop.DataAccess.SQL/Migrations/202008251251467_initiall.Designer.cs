@@ -7,13 +7,13 @@ namespace OnlineShop.DataAccess.SQL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class checkoutfixed : IMigrationMetadata
+    public sealed partial class initiall : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(checkoutfixed));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initiall));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008211306486_checkoutfixed"; }
+            get { return "202008251251467_initiall"; }
         }
         
         string IMigrationMetadata.Source

@@ -281,6 +281,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008251246588_initiall.cs" />
+    <Compile Include="Migrations\202008251246588_initiall.Designer.cs">
+      <DependentUpon>202008251246588_initiall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008251402548_decimal.cs" />
+    <Compile Include="Migrations\202008251402548_decimal.Designer.cs">
+      <DependentUpon>202008251402548_decimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -400,6 +409,14 @@
       <Project>{B0FB88F5-5139-4190-AC7E-43986222CA20}</Project>
       <Name>OnlineShop.Servises</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202008251246588_initiall.resx">
+      <DependentUpon>202008251246588_initiall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008251402548_decimal.resx">
+      <DependentUpon>202008251402548_decimal.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

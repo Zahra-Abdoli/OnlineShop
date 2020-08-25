@@ -21,9 +21,22 @@ namespace OnlineShop.WebUI.Controllers
         }
 
         // GET: CheckOut
-        public ActionResult Index()
+        public ActionResult Index(string Id)
         {
-            return View();
+            CheckOutInformation model = context.Find(Id);
+            CheckOutInformationViewModel viewModel = new CheckOutInformationViewModel();
+         
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                viewModel.checkOutInformation = model;
+            }
+            viewModel.basketItemViewModels = basketService.GetBasketItems(this.HttpContext);
+            return View(viewModel);
+
         }
 
         // GET: CheckOut/Create
@@ -48,7 +61,8 @@ namespace OnlineShop.WebUI.Controllers
             {
                 context.Insert(checkOutInformation);
                 context.Commit();
-                return RedirectToAction("Index");
+ 
+                return RedirectToAction("Index",new { ID= checkOutInformation.Id } );
 
             }
         }

@@ -1,7 +1,121 @@
-﻿
+﻿@model OnlineShop.Core.ViewModels.CheckOutInformationViewModel
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>PayMent</h2>
 
+<div>
+    <h4>CheckOutInformation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.checkOutInformation.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkOutInformation.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkOutInformation.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkOutInformation.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkOutInformation.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkOutInformation.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkOutInformation.Adress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkOutInformation.Adress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkOutInformation.ZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkOutInformation.ZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkOutInformation.MobilePhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkOutInformation.MobilePhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkOutInformation.EmailAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkOutInformation.EmailAdress)
+        </dd>
+
+    </dl>
+</div>
+@*information*@
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Price
+        </th>
+
+        <th>
+            Total Amount
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model.basketItemViewModels)
+    {
+        <tr>
+            <td>
+                <img style="height:50px" class="img" src="~/Content/ProductImages/@item.Image" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+
+            <td>
+                @String.Format("{0:c}", item.Price)
+            </td>
+            <td>
+                @String.Format("{0:c}", item.Price * item.Quantity)
+            </td>
+
+        </tr>
+
+
+    }
+</table>
+<a href="" class="btn btn-default">Swish</a>
+<a href="" class="btn btn-default">PayPal</a>
+ <a href="" class="btn btn-default">Klarna</a>
+
+<p>
+    @Html.ActionLink("Back ", "Create")
+</p>
