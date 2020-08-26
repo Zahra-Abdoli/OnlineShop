@@ -9,10 +9,6 @@ namespace OnlineShop.Core
 {
   public  class Product:BaseEntity
     {
-        public Product()
-        { if (Discount != 0)
-                this.Price = this.Price * (100 - Discount) / 100;
-        }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }

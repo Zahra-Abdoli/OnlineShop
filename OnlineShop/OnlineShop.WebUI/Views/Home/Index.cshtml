@@ -241,7 +241,7 @@
                             @if (item.Discount != 0)
                             {
                                 <div class="col-md-12">
-                                    <h4 style="color:red">@item.Discount % Discount</h4>
+                                    <h4 style="color:red">@item.Discount.ToString("#.#") % Discount</h4>
                                 </div>
                                 <div class="col-md-12">
                                     <h4 style="text-decoration:line-through">@(item.Price*100/(100-item.Discount))</h4>

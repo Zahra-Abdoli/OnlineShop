@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace OnlineShop.WebUI.Controllers
 {
     [Authorize(Roles = "Admin")]
-      //[Authorize]
+    //[Authorize]
     public class ProductAdminController : Controller
     {
         IRepository<Product> context;
@@ -20,28 +20,28 @@ namespace OnlineShop.WebUI.Controllers
             context = productContext;
             productCategories = productCategoriesContext;
         }
-       
+
         public ActionResult Index()
         {
             List<Product> products = context.Collection().ToList();
-           
+
             return View(products);
         }
-    
+
         public ActionResult Create()
         {
 
             ProductAdminViewModel viewModel = new ProductAdminViewModel();
             viewModel.product = new Product();
             viewModel.productCategories = productCategories.Collection();
-            
 
-                return View(viewModel);
+
+            return View(viewModel);
 
         }
         [HttpPost]
-  
-        public ActionResult Create(Product product,HttpPostedFileBase file)
+
+        public ActionResult Create(Product product, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
@@ -54,6 +54,10 @@ namespace OnlineShop.WebUI.Controllers
                     product.Image = product.Id + Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
                 }
+
+                if (product.Discount != 0)
+                    product.Price = product.Price * (100 - product.Discount) / 100;
+
                 context.Insert(product);
                 context.Commit();
                 return RedirectToAction("Index");
@@ -98,7 +102,7 @@ namespace OnlineShop.WebUI.Controllers
 
                 productToEdit.Category = product.Category;
                 productToEdit.Description = product.Description;
-             
+
                 productToEdit.Name = product.Name;
                 productToEdit.Price = product.Price;
 
@@ -136,7 +140,7 @@ namespace OnlineShop.WebUI.Controllers
         }
         [HttpPost]
         [ActionName("Delete")]
- 
+
         public ActionResult ConfirmDelete(string Id)
         {
             Product productToDelete = context.Find(Id);
