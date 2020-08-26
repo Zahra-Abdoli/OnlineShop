@@ -281,6 +281,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008211401472_security.cs" />
+    <Compile Include="Migrations\202008211401472_security.Designer.cs">
+      <DependentUpon>202008211401472_security.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\202008251246588_initiall.cs" />
     <Compile Include="Migrations\202008251246588_initiall.Designer.cs">
       <DependentUpon>202008251246588_initiall.cs</DependentUpon>
@@ -416,6 +421,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008251402548_decimal.resx">
       <DependentUpon>202008251402548_decimal.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202008211401472_security.resx">
+      <DependentUpon>202008211401472_security.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
