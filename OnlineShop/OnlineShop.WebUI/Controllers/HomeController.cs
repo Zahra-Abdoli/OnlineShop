@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using OnlineShop.Core.Contarcts;
 
 using OnlineShop.Core;
+using OnlineShop.Core.ViewModels;
 
 namespace Myshop.WebUI.Controllers
 {
@@ -20,10 +21,20 @@ namespace Myshop.WebUI.Controllers
             context = productContext;
             productCategories = productCategoryContext;
         }
-        public ActionResult Index()
+        public ActionResult Index(string searchstring)
         {
-            List<Category> categories = productCategories.Collection().ToList();
-            return View(categories);
+            HomeViewModel model = new HomeViewModel();
+            if (!String.IsNullOrEmpty(searchstring))
+            {
+                model.productCategories = productCategories.Collection().ToList().Where(p => p.CategoryName.Contains(searchstring));
+                model.products = context.Collection().ToList().Where(p => p.Name.Contains(searchstring));
+            }
+            else
+            {
+                model.productCategories = productCategories.Collection().ToList();
+                model.products = context.Collection().ToList().Where(p => p.Discount != 0);
+            }
+            return View(model);
         }
         public ActionResult Sort(string categoryName)
         {
@@ -43,7 +54,6 @@ namespace Myshop.WebUI.Controllers
                 return View(product);
             }
         }
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

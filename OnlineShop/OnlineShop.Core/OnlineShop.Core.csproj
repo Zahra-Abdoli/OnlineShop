@@ -55,6 +55,7 @@
     <Compile Include="ViewModels\BasketItemViewModel.cs" />
     <Compile Include="ViewModels\BasketSummaryViewModel.cs" />
     <Compile Include="ViewModels\CheckOutInformationViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ProductAdminViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
