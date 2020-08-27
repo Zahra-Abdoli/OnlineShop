@@ -104,7 +104,11 @@ namespace OnlineShop.WebUI.Controllers
                 productToEdit.Description = product.Description;
 
                 productToEdit.Name = product.Name;
-                productToEdit.Price = product.Price;
+                if (product.Discount != 0)
+                    productToEdit.Price = product.Price * (100 - product.Discount) / 100;
+                else
+
+                    productToEdit.Price = product.Price;
 
 
                 context.Commit();
