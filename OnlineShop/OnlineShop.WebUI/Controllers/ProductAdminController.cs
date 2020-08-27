@@ -1,11 +1,16 @@
 ﻿using OnlineShop.Core;
 using OnlineShop.Core.Contarcts;
+using OnlineShop.Core.Models;
 using OnlineShop.Core.ViewModels;
+using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using Unity.Injection;
 
 namespace OnlineShop.WebUI.Controllers
 {
@@ -15,19 +20,36 @@ namespace OnlineShop.WebUI.Controllers
     {
         IRepository<Product> context;
         IRepository<Category> productCategories;
-        public ProductAdminController(IRepository<Product> productContext, IRepository<Category> productCategoriesContext)
+        IRepository<Comment> comments;
+        public ProductAdminController(IRepository<Product> productContext, IRepository<Category> productCategoriesContext, IRepository<Comment> commentsContext)
         {
             context = productContext;
             productCategories = productCategoriesContext;
+            comments = commentsContext;
+
         }
-       
+
         public ActionResult Index()
         {
             List<Product> products = context.Collection().ToList();
-           
+
             return View(products);
+
         }
-    
+
+        //public ActionResult ShowComment(string Id)
+        //{
+        //    //IEnumerable<CommentViewModel> listOfCommentViewModels = (from comment in comments.Collection()
+        //    CommentViewModel viewModel = new CommentViewModel();
+        //    viewModel.Comments = new Comment();
+        //    var cat = from c in comments.Collection()
+        //              where c.ProductId== Id select c;
+
+        //    var model = cat.FirstOrDefault();
+
+        //    return View(model);
+        //}
+
         public ActionResult Create()
         {
 
@@ -104,22 +126,76 @@ namespace OnlineShop.WebUI.Controllers
 
 
                 context.Commit();
+               
                 return RedirectToAction("Index");
             }
         }
-        public ActionResult Details(string id)
+        public ActionResult Details(string Id)
 
         {
-            Product product = context.Find(id);
+            Product product = context.Find(Id);
             if (product == null)
             {
                 return HttpNotFound();
             }
+
+            //else
+            //{
+            //    return View(product);
+            //}
+            ViewBag.Id = Id;
+            List<Comment> usercomments = comments.Collection().Where(c => c.ProductId == Id).ToList();
+            ViewBag.Comments = comments;
+            var ratings = comments.Collection().Where(c => c.ProductId == Id).ToList();
+            if (ratings.Count() > 0)
+            {
+                var ratingSum = ratings.Sum(d => d.Rating);
+                ViewBag.RatingSum = ratingSum;
+                var ratingCount = ratings.Count();
+                ViewBag.RatingCount = ratingCount;
+            }
             else
             {
-                return View(product);
+                ViewBag.RatingSum = 0;
+                ViewBag.RatingCount = 0;
             }
+
+
+            return View(product);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(FormCollection form)
+        {
+            int x = 0;
+            var comment = form["Comment"].ToString();
+            var Id = int.TryParse(form["Id"], out x);
+            var rating = int.Parse(form["Rating"]);
+
+            Comment userComment = new Comment()
+            {
+                ProductId = Id.ToString(),
+               CommentDescritption = comment,
+                Rating = rating,
+               CommentedOn = DateTime.Now
+            };
+            comments.Insert(userComment);
+            comments.Commit();
+
+
+           
+            return RedirectToAction("ShowRating", "ProductAdmin");
+        }
+
+        public ActionResult ShowRating()
+
+        {
+
+            
+            return View();
+
+        }
+
 
         public ActionResult Delete(string Id)
         {

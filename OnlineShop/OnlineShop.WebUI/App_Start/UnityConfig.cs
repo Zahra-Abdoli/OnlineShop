@@ -1,6 +1,7 @@
 using OnlineShop.Core;
 using OnlineShop.Core.Contarcts;
 using OnlineShop.Core.Models;
+using OnlineShop.Core.ViewModels;
 using OnlineShop.DataAccess.SQL;
 using OnlineShop.Servises;
 using OnlineShop.WebUI.Controllers;
@@ -55,11 +56,14 @@ namespace OnlineShop.WebUI
             container.RegisterType<IRepository<Basket>, SqlRepository<Basket>>();
             container.RegisterType<IRepository<BasketItem>, SqlRepository<BasketItem>>();
             container.RegisterType<IRepository<CheckOutInformation>, SqlRepository<CheckOutInformation>>();
+            container.RegisterType<IRepository<Comment>, SqlRepository<Comment>>();
             container.RegisterType<IBasketService, BasketService>();
+            container.RegisterType<IBasketService, BasketService>();
+
 
             //register a user it is probably in the standard AccountController.
             // Unity tries to call the constructor with two parameters, for example
-             //Unity to call the parameterless constructor
+            //Unity to call the parameterless constructor
             container.RegisterType<AccountController>(new InjectionConstructor());
 
         }

@@ -297,6 +297,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\StarImages\StarFade.gif" />
+    <Content Include="Content\StarImages\StarGlow.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -373,6 +375,10 @@
     <Content Include="Views\Account\RegisterRole.cshtml" />
     <Content Include="Views\CheckOut\Create.cshtml" />
     <Content Include="Views\CheckOut\Index.cshtml" />
+    <Content Include="Views\ProductAdmin\ShowComment.cshtml" />
+    <Content Include="Views\Shared\_CommentBox.cshtml" />
+    <Content Include="Views\ProductAdmin\ShowRating.cshtml" />
+    <Content Include="Views\Home\ShowRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

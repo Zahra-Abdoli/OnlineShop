@@ -131,6 +131,10 @@
     <Compile Include="Migrations\202008211306486_checkoutfixed.Designer.cs">
       <DependentUpon>202008211306486_checkoutfixed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008242058099_Rating.cs" />
+    <Compile Include="Migrations\202008242058099_Rating.Designer.cs">
+      <DependentUpon>202008242058099_Rating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -154,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008211306486_checkoutfixed.resx">
       <DependentUpon>202008211306486_checkoutfixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008242058099_Rating.resx">
+      <DependentUpon>202008242058099_Rating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
