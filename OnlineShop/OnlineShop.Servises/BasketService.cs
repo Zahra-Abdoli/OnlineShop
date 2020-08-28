@@ -137,5 +137,18 @@ namespace OnlineShop.Servises
                 return model;
             }
         }
+        public void RemoveFromBasket1(HttpContextBase httpContext)
+        {
+            Basket basket = GetBasket(httpContext, true);
+            // BasketItem item = basket.BasketItems.FirstOrDefault(i => i.Id == itemId);
+            foreach (var item in basket.BasketItems.ToList())
+            {
+                if (item != null)
+                {
+                    basket.BasketItems.Remove(item);
+                    basketContext.Commit();
+                }
+            }
+        }
     }
 }

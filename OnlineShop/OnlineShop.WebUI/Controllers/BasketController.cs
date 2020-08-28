@@ -38,5 +38,14 @@ namespace OnlineShop.WebUI.Controllers
 
             return PartialView(basketSummary);
         }
+        public ActionResult RemoveFromBasket1()
+        {
+            basketService.RemoveFromBasket1(this.HttpContext);
+            return RedirectToAction("Login");
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }

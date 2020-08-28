@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+}
+
+<h2>Payment</h2>
+<div class="form">
+    <form action="ConfirmOrder" method="get" enctype="text/plain">
+        <input type="text" name="First Name" id="firstName" size="35" placeholder="First Name*" required><br><br>
+        <input type="text" name="Last Name" id="lastName" size="35" placeholder="Last Name*" required><br><br>
+        <input type="email" name="Email" id="email" size="35" placeholder="Email*" required><br><br>
+        <input type="text" name="Address" id="address" size="35" placeholder="Address*" required><br><br>
+        <input type="text" name="Telephone Number" id="telephoneNumber" size="35" placeholder="Telephone Number*" required><br><br>
+        <input type="text" name="Card Number" id="cardNumber" size="35" placeholder="Card Number*" required><br><br>
+        <input type="text" name="MM/YY" id="MM/YY" size="35" placeholder="MM/YY*" required><br><br>
+        <input type="text" name="CVC" id="CVC" size="35" placeholder="CVC*" required><br><br>
+        <textarea id="comments" name="Comments" rows="5" cols="38" placeholder="Comments"></textarea><br><br>
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+</div>

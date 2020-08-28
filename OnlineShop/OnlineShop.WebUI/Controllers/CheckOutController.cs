@@ -66,6 +66,15 @@ namespace OnlineShop.WebUI.Controllers
 
             }
         }
+        public ActionResult Payment()
+        {
+            return View();
+        }
 
+        public ActionResult ConfirmOrder()
+        {
+            basketService.RemoveFromBasket1(this.HttpContext);
+            return View();
+        }
     }
 }
