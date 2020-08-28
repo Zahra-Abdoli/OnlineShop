@@ -23,7 +23,7 @@ namespace OnlineShop.WebUI.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public System.Data.Entity.DbSet<Product> Products { get; set; }
+        
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

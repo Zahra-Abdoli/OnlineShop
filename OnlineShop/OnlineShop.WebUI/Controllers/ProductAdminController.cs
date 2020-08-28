@@ -54,6 +54,11 @@ namespace OnlineShop.WebUI.Controllers
                     product.Image = product.Id + Path.GetExtension(file.FileName);
                     file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
                 }
+               
+                if (product.Discount != 0)
+                    product.Price = product.Price * (100 - product.Discount) / 100;
+
+
                 context.Insert(product);
                 context.Commit();
                 return RedirectToAction("Index");
