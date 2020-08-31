@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="icon" href="~/Scripts/assets/img/logo/logo1.png">
+
+    <!-- CSS here -->
+    <link href="~/Scripts/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Scripts/assets/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Scripts/assets/css/flaticon.css" rel="stylesheet" />
+    <link href="~/Scripts/assets/css/slicknav.css" rel="stylesheet" />
+    <link href="~/Scripts/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Scripts/assets/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Scripts/assets/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="~/Scripts/assets/css/themify-icons.css" rel="stylesheet" />
+    <link href="~/Scripts/assets/css/slick.css" rel="stylesheet" />
+    <link href="~/Scripts/assets/css/nice-select.css" rel="stylesheet" />
+    <link href="~/Scripts/assets/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="~/Scripts/assets/img/logo/logo1.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+
+    <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header ">
+
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                                <div class="logo">
+                                    <a href="~/Views/Home/Index.cshtml"><img src="~/Scripts/assets/img/logo/logo1.png" alt=""></a>
+                                    @Html.ActionLink("H&K", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+
+                                        @*<ul id="navigation">
+
+                                                <li>@Html.ActionLink("About", "About", "Home")</li>
+                                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                                @if (Request.IsAuthenticated)
+                                                {
+                                                <li>@Html.ActionLink("Roles", "Index", "Role")</li>
+                                                }
+                                                @if (User.IsInRole("Admin"))
+                                                {
+                                                 <li>@Html.ActionLink("Product Admin", "Index", "ProductAdmin")</li>
+                                                 <li>@Html.ActionLink("Category Admin", "Index", "CategoryAdmin")</li>
+                                                }
+
+                                            </ul>
+                                            @Html.Partial("_LoginPartial")
+                                            @{ Html.RenderAction("BasketSummary", "Basket"); }*@
+
+                                        <ul id="navigation">
+
+                                            <li>@Html.ActionLink("Home", "index", "Home")</li>
+                                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                            @if (Request.IsAuthenticated)
+                                            {
+                                                <li>@Html.ActionLink("Roles", "Index", "Role")</li>
+                                            }
+                                            @if (User.IsInRole("Admin"))
+                                            {
+                                                <li>@Html.ActionLink("Product Admin", "Index", "ProductAdmin")</li>
+                                                <li>@Html.ActionLink("Category Admin", "Index", "CategoryAdmin")</li>
+
+                                            }
+                                            <li>
+                                                @Html.Partial("_LoginPartial")
+                                                @{ Html.RenderAction("BasketSummary", "Basket"); }
+                                            </li>
+
+
+
+                                            @*<li><a href="index.html">Home</a></li>
+                                                <li><a href="Catagori.html">Catagori</a></li>
+                                                <li class="hot">
+                                                    <a href="#">Latest</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="product_list.html"> Product list</a></li>
+                                                        <li><a href="single-product.html"> Product Details</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="blog.html">Blog</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="blog.html">Blog</a></li>
+                                                        <li><a href="single-blog.html">Blog Details</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Pages</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="login.html">Login</a></li>
+                                                        <li><a href="cart.html">Card</a></li>
+                                                        <li><a href="elements.html">Element</a></li>
+                                                        <li><a href="about.html">About</a></li>
+                                                        <li><a href="confirmation.html">Confirmation</a></li>
+                                                        <li><a href="cart.html">Shopping Cart</a></li>
+                                                        <li><a href="checkout.html">Product Checkout</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="contact.html">Contact</a></li>*@
+                                        </ul>
+
+                                    </nav>
+                                </div>
+                            </div>
+                            @*<div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
+                                    <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+                                        <li class="d-none d-xl-block">
+                                            <div class="form-box f-right ">
+                                                <input type="text" name="Search" placeholder="Search products">
+                                                <div class="search-icon">
+                                                    <i class="fas fa-search special-tag"></i>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class=" d-none d-xl-block">
+                                            <div class="favorit-items">
+                                                <i class="far fa-heart"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="shopping-card">
+                                                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                            </div>
+                                        </li>
+                                        <li class="d-none d-lg-block"> <a href="#" class="btn header-btn">Sign in</a></li>
+                                    </ul>
+                                </div>*@
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+
+        <!-- Footer Start-->
+        <div class="footer-area footer-padding fotcolor">
+
+            <div class="container">
+
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <!-- logo -->
+                                <div class="footer-logo">
+                                    <a href="index.html"><img src="~/Scripts/assets/img/logo/logo1.png" alt=""></a>
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="footer-pera">
+                                        <p>H&K is a Swedish multinational group that designs and sells ready-to-assemble household, kitchen appliances and home accessories.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Social Media</h4>
+                                <div class="footer-social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-behance"></i></a>
+                                    <a href="#"><i class="fas fa-globe"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Telephone Number</h4>
+                                <p>08 566 107 00</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Address</h4>
+                                <p>Klarabergsviadukten 70, 111 64 Stockholm</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer bottom -->
+
+                <div class="row">
+                    <div class="col-xl-7 col-lg-7 col-md-7">
+                        <div class="footer-copy-right">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved by H&K Household AB <i class="ti-heart" aria-hidden="true"></i>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-5">
+                        <div class="footer-copy-right f-right">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+
+    </footer>
+    <!-- JS here -->
+    <script src="~/Scripts/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="~/Scripts/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/assets/js/popper.min.js"></script>
+    <script src="~/Scripts/assets/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/assets/js/jquery.slicknav.min.js"></script>
+    <script src="~/Scripts/assets/js/owl.carousel.min.js"></script>
+    <script src="~/Scripts/assets/js/slick.min.js"></script>
+    <script src="~/Scripts/assets/js/wow.min.js"></script>
+    <script src="~/Scripts/assets/js/animated.headline.js"></script>
+    <script src="~/Scripts/assets/js/jquery.magnific-popup.js"></script>
+    <script src="~/Scripts/assets/js/jquery.scrollUp.min.js"></script>
+    <script src="~/Scripts/assets/js/jquery.nice-select.min.js"></script>
+    <script src="~/Scripts/assets/js/jquery.sticky.js"></script>
+    <script src="~/Scripts/assets/js/contact.js"></script>
+    <script src="~/Scripts/assets/js/jquery.form.js"></script>
+    <script src="~/Scripts/assets/js/jquery.validate.min.js"></script>
+    <script src="~/Scripts/assets/js/mail-script.js"></script>
+    <script src="~/Scripts/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/Scripts/assets/js/plugins.js"></script>
+    <script src="~/Scripts/assets/js/main.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
