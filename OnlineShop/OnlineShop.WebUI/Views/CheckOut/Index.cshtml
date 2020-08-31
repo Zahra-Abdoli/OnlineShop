@@ -3,119 +3,121 @@
     ViewBag.Title = "Index";
 }
 
-<h2>PayMent</h2>
+<h2 class="mission margin">PayMent</h2>
+<div class="container">
+    <div>
+        <h4>CheckOutInformation</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.checkOutInformation.FirstName)
+            </dt>
 
-<div>
-    <h4>CheckOutInformation</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.checkOutInformation.FirstName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.checkOutInformation.FirstName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.checkOutInformation.FirstName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.checkOutInformation.LastName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.checkOutInformation.LastName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.checkOutInformation.LastName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.checkOutInformation.LastName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.checkOutInformation.City)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.checkOutInformation.City)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.checkOutInformation.City)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.checkOutInformation.City)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.checkOutInformation.Adress)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.checkOutInformation.Adress)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.checkOutInformation.Adress)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.checkOutInformation.Adress)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.checkOutInformation.ZipCode)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.checkOutInformation.ZipCode)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.checkOutInformation.ZipCode)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.checkOutInformation.ZipCode)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.checkOutInformation.MobilePhone)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.checkOutInformation.MobilePhone)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.checkOutInformation.MobilePhone)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.checkOutInformation.MobilePhone)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.checkOutInformation.EmailAdress)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.checkOutInformation.EmailAdress)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.checkOutInformation.EmailAdress)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.checkOutInformation.EmailAdress)
-        </dd>
-
-    </dl>
-</div>
-@*information*@
-<table class="table">
-    <tr>
-        <th></th>
-        <th>
-            Name
-        </th>
-        <th>
-            Quantity
-        </th>
-        <th>
-            Price
-        </th>
-
-        <th>
-            Total Amount
-        </th>
-
-    </tr>
-
-    @foreach (var item in Model.basketItemViewModels)
-    {
+        </dl>
+    </div>
+    @*information*@
+    <table class="table">
         <tr>
-            <td>
-                <img style="height:50px" class="img" src="~/Content/ProductImages/@item.Image" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
+            <th></th>
+            <th>
+                Name
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
 
-            <td>
-                @String.Format("{0:c}", item.Price)
-            </td>
-            <td>
-                @String.Format("{0:c}", item.Price * item.Quantity)
-            </td>
+            <th>
+                Total Amount
+            </th>
 
         </tr>
 
+        @foreach (var item in Model.basketItemViewModels)
+        {
+            <tr>
+                <td>
+                    <img style="height:50px" class="img" src="~/Content/ProductImages/@item.Image" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
 
-    }
-</table>
-<a href="@Url.Action("Payment","CheckOut")" class="btn btn-default">Swish</a>
-<a href="@Url.Action("Payment","CheckOut")" class="btn btn-default">PayPal</a>
-<a href="@Url.Action("Payment","CheckOut")" class="btn btn-default">Klarna</a>
+                <td>
+                    @String.Format("{0:c}", item.Price)
+                </td>
+                <td>
+                    @String.Format("{0:c}", item.Price * item.Quantity)
+                </td>
 
-<p>
-    @Html.ActionLink("Back ", "Create")
-</p>
+            </tr>
+
+
+        }
+    </table>
+    <a href="@Url.Action("Payment","CheckOut")" class="btn btn-default">Swish</a>
+    <a href="@Url.Action("Payment","CheckOut")" class="btn btn-default">PayPal</a>
+    <a href="@Url.Action("Payment","CheckOut")" class="btn btn-default">Klarna</a>
+
+    <p>
+        @Html.ActionLink("Back ", "Create")
+    </p>
+
+</div>
