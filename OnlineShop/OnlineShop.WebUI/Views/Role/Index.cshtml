@@ -5,30 +5,33 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Available Roles For Application</h2>
-<section class="col-sm-6">
-    <table class="table-bordered">
-        @Html.ActionLink("Create Role","Create","Role")
-    </table>
-</section>
-<section class="col-sm-6">
-    <table class="table-bordered">
-        @Html.ActionLink("Assign Role To User", "RegisterRole", "Account")
-    </table>
-</section>
-<br/>
-<table class="table table-bordered table-hover">
-    <tr>
-        <th class="C">
-            Role Name
-        </th>
-    </tr>
-    @foreach(var item in Model)
-    {
+<h2 class="mission margin">Available roles for application</h2>
+<div class="container">
+    <section class="col-sm-6">
+        <table class="table-bordered">
+            @Html.ActionLink("Create Role", "Create", "Role")
+        </table>
+    </section>
+    <section class="col-sm-6">
+        <table class="table-bordered">
+            @Html.ActionLink("Assign Role To User", "RegisterRole", "Account")
+        </table>
+    </section>
+    <br />
+    <table class="table table-bordered table-hover">
         <tr>
-            <td class="C">
-                @item.Name
-            </td>
+            <th class="C">
+                Role Name
+            </th>
         </tr>
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="C">
+                    @item.Name
+                </td>
+            </tr>
+        }
     </table>
+
+</div>

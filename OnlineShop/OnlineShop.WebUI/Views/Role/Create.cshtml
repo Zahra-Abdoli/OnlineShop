@@ -5,24 +5,25 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create Role</h2>
-
-<style type="text/css">
-    #tbrole, .C {
-        border: double;
+<h2 class="mission margin">Create Role</h2>
+<div class="container">
+    <style type="text/css">
+        #tbrole, .C {
+            border: double;
+        }
+    </style>
+    @using (Html.BeginForm())
+    {
+        <table class="table table-table-hover">
+            <tr>
+                <td class="C">Enter Role Name to be Created :</td>
+                <td class="C">
+                    @Html.EditorFor(m => m.Name)
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Create Role" />
     }
-</style>
-@using (Html.BeginForm())
-{
-    <table class="table table-table-hover">
-    <tr>
-        <td class="C">Enter Role Name to be Created :</td>
-        <td class="C">
-            @Html.EditorFor(m => m.Name)
-        </td>
-    </tr>
-    </table>
-    <input type="submit" value="Create Role" />
-}
 
 
+</div>
