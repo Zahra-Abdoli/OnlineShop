@@ -13127,4 +13127,13 @@ a:hover{
 .top-margin{
     margin-top:20px;
 }
+.half-margin{
+    margin-left:15px;
+}
+.page-margin{
+    margin-top:50px;
+}
+.nav-color{
+    background-color:lightpink;
+}
 /*# sourceMappingURL=style.css.map */
