@@ -2,14 +2,15 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<form asp-controller="Home" asp-action="Index" method="get">
-    <p>
-        <input type="text" name="searchString">
-        <input type="submit" value="Search" />
-    </p>
-</form>
+    <form asp-controller="Home" asp-action="Index" method="get">
+        <p>
+            <input class="input" type="text" name="searchString" placeholder="Search products">
+            <input class="btn header-btn mybtn" type="submit" value="Search" />
+        </p>
+       
+    </form>
 
-<h1>Categorys</h1>
+@*<h1>Categorys</h1>
 
 @foreach (var item in Model.productCategories)
 {
@@ -18,6 +19,7 @@
         <div class="col-md-12">
 
             <strong>@Html.ActionLink(item.CategoryName, "Sort", new { categoryName = item.CategoryName })</strong>
+
 
 
         </div>
@@ -62,8 +64,7 @@
     </div>
 
 }
-<div class="col-md-12 clearfix">
-    nwe layout
+<div class="col-md-12 clearfix">*@
 
 
 
@@ -96,9 +97,9 @@
                                     <h1 data-animation="fadeInRight" data-delay=".6s">H&K <br> Household</h1>
                                     <p data-animation="fadeInRight" data-delay=".8s">It is just easy to feel comfortable at home!</p>
                                     <!-- Hero-btn -->
-                                    <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
+                                    @*<div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
                                         <a href="industries.html" class="btn hero-btn">Shop Now</a>
-                                    </div>
+                                    </div>*@
                                 </div>
                             </div>
                         </div>
@@ -118,9 +119,9 @@
                                     <h1 data-animation="fadeInRight" data-delay=".6s">H&K <br> Household</h1>
                                     <p data-animation="fadeInRight" data-delay=".8s">It is just easy to feel comfortable at home!</p>
                                     <!-- Hero-btn -->
-                                    <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
+                                    @*<div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
                                         <a href="industries.html" class="btn hero-btn">Shop Now</a>
-                                    </div>
+                                    </div>*@
                                 </div>
                             </div>
                         </div>
@@ -141,11 +142,27 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-4 col-lg-6">
+
+                    @foreach (var item in Model.productCategories)
+                    {
+                        <div class="col-md-4 kitchen" style="height:350px;width:150px;padding:10px; border:solid thin whitesmoke ;background-size:500px;background-image:url('/Content/CategoryImages/@item.Image')">
+
+                            <div class="col-md-12 margin-up center">
+
+                                <strong>@Html.ActionLink(item.CategoryName, "Sort", new { categoryName = item.CategoryName })</strong>
+
+
+                            </div>
+
+                        </div>
+
+                    }
+
+                    @*<div class="col-xl-4 col-lg-6">
                         <div class="single-category mb-30">
                             <div class="category-img text-center">
 
-                              
+
 
                                 <h2 class="kitchen">Living Room</h2>
                                 <img class="kitchen" src="~/Scripts/assets/img/my/living-room.jpg" alt="">
@@ -159,6 +176,7 @@
                     <div class="col-xl-4 col-lg-6">
                         <div class="single-category mb-30">
                             <div class="category-img text-center">
+
                                 <h2 class="kitchen">Bedroom</h2>
                                 <img class="kitchen" src="~/Scripts/assets/img/my/bedroom.jpg" alt="">
                                 <div class="category-caption">
@@ -178,36 +196,81 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </section>
         <!-- Category Area End-->
         <!-- Latest Products Start -->
-        <section class="latest-product-area padding-bottom">
-            <div class="container">
+        <section class="category-area section-padding30" @*class="latest-product-area padding-bottom"*@>
+            <div class="container-fluid" @*class="container"*@>
                 <div class="row product-btn d-flex justify-content-end align-items-end">
                     <!-- Section Tittle -->
                     <div class="col-xl-4 col-lg-5 col-md-5">
                         <div class="section-tittle mb-30">
                             <h2>Discount</h2>
+
                         </div>
+                        <hr />
                     </div>
                     <div class="col-xl-8 col-lg-7 col-md-7">
                         <div class="properties__button f-right">
 
                         </div>
                     </div>
+                    
                 </div>
                 <!-- Nav Card -->
-                <div class="tab-content" id="nav-tabContent">
+                @*<div class="tab-content" id="nav-tabContent">*@
                     <!-- card one -->
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    @*<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">*@
                         <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-md-6">
+
+                            @foreach (var item in Model.products)
+                            {
+                                <div class="col-md-4 kitchen center" style="height: 350px; width: 150px; padding: 10px; @*border: solid thin whitesmoke*@">
+                                    <div class="col-md-12">
+                                        <img class="img" style="height:250px" src="~/Content/ProductImages/@item.Image" />
+                                    </div>
+                                    <div class="col-md-12">
+                                        <strong>@Html.ActionLink(item.Name, "Details", new { id = item.Id })</strong>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>@item.Description</p>
+                                    </div>
+                                    @if (item.Discount != 0)
+                                    {
+                                        <div class="col-md-12">
+                                            <h4 style="color:red">@item.Discount % Discount</h4>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <h4 style="text-decoration:line-through">@(item.Price*100/(100-item.Discount))</h4>
+                                        </div>
+                                        <div class="col-md-12">
+
+                                            <h4 style="color:forestgreen"> @item.Price</h4>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-12">
+                                            <h4>@item.Price</h4>
+                                        </div>
+
+                                    }
+
+                                </div>
+
+                            }
+
+
+
+
+
+                            @*<div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single-product mb-60">
 
-                                  
+
 
 
                                     <div class="product-img">
@@ -292,13 +355,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
 
                         </div>
-                    </div>
+                    @*</div>*@
                     <!-- Card two -->
 
-                </div>
+                @*</div>*@
                 <!-- End Nav Card -->
             </div>
         </section>

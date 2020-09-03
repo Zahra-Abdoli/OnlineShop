@@ -12,7 +12,7 @@
             <img class="img-responsive" src="~/Content/ProductImages/@Model.Image" />
         </div>
         <div class="col-md-10">
-            <dl class="dl-horizontal">
+            <dl class="dl-horizontal mymargin">
 
                 <dt>
                     @Html.DisplayNameFor(model => model.Description)
@@ -30,7 +30,7 @@
                     @Html.DisplayFor(model => model.Price)
                 </dd>
                 <dt></dt>
-                <dd> <a href="" class="btn btn-default">Add To Basket</a></dd>
+                <dd><a href="@Url.Action("AddToBasket", "Basket", new { Id=Model.Id})" class="btn btn-default">Add to Basket</a></dd>
                 @Html.ActionLink("Back to List", "Index")
             </dl>
         </div>

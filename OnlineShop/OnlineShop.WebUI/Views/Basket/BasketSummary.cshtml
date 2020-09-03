@@ -1,5 +1,8 @@
 ﻿@model OnlineShop.Core.ViewModels.BasketSummaryViewModel
-<ul class="nav navbar-nav navbar-right">
-    <li><a href="@Url.Action("Index","Basket")"> @Model.BasketCount Cart</a></li>
-   
-</ul>
+<div class="main-menu f-right d-none d-lg-block nav-margin bas">
+
+    <ul id="navigation" @*class="nav navbar-nav navbar-right"*@>
+        <li><a href="@Url.Action("Index","Basket")"> @Model.BasketCount Cart</a></li>
+
+    </ul>
+</div>

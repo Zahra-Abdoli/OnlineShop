@@ -13093,4 +13093,38 @@ input:focus {
 .margin{
     margin-left: 40px;
 }
+.width{
+    width:1000px;
+}
+a{
+    color:royalblue;
+}
+a:hover{
+    color:sandybrown
+}
+.center{
+    text-align:center;
+}
+.margin-up{
+    margin-top: -50px;
+    font-size: 1.5rem;
+}
+.nav-margin{
+    margin-top: -98px;
+    margin-right:-140px;
+    
+}
+.bas{
+    margin-right:0px;
+}
+.mymargin{
+    margin-bottom:30px;
+}
+.back{
+    margin-left:35px;
+    margin-top: -20px;
+}
+.top-margin{
+    margin-top:20px;
+}
 /*# sourceMappingURL=style.css.map */
